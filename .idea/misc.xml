@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/File Transfer/Binus/SEMESTER 5/Mobile Programming/Huawei/HuaweiProject/HuaweiProject/app/src/main/res/drawable/button.xml" value="0.33177083333333335" />
+        <entry key="..\:/File Transfer/Binus/SEMESTER 5/Mobile Programming/Huawei/HuaweiProject/HuaweiProject/app/src/main/res/drawable/custom_input.xml" value="0.33177083333333335" />
+        <entry key="..\:/File Transfer/Binus/SEMESTER 5/Mobile Programming/Huawei/HuaweiProject/HuaweiProject/app/src/main/res/layout/activity_login_page.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.26721014492753625" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.26721014492753625" />
         <entry key="app/src/main/res/layout/add_task.xml" value="0.37604166666666666" />
