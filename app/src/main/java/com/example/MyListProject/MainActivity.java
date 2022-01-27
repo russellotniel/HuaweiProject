@@ -1,4 +1,4 @@
-package com.example.huaweiproject;
+package com.example.MyListProject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;

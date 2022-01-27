@@ -2,11 +2,13 @@ plugins {
     id 'com.android.application'
 }
 
+apply plugin: 'com.huawei.agconnect'
+
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.huaweiproject"
+        applicationId "com.example.MyListProject"
         minSdk 19
         targetSdk 31
         versionCode 1
@@ -38,5 +40,6 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
+    implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
+    implementation 'com.huawei.hms:hwid:6.3.0.301'
 }
