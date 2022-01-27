@@ -29,8 +29,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/uncompletedTasksSubtitle"
-        android:text="Uncompleted Tasks"
+        android:id="@+id/yourTasksSubtitle"
+        android:text="Your Tasks"
         android:textSize="20dp"
         android:layout_below="@id/myListTitle"
          android:layout_marginTop="12dp"
@@ -43,29 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/uncompletedTasksRC"
-        android:layout_below="@+id/uncompletedTasksSubtitle"
-        android:background="@color/white"
-        android:nestedScrollingEnabled="true"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/completedTaskSubtitle"
-        android:text="Completed Tasks"
-        android:textSize="20dp"
-        android:layout_below="@id/uncompletedTasksRC"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        android:layout_marginLeft="10dp"
-        android:textColor="@color/white"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/completedTasksRC"
-        android:layout_below="@+id/completedTaskSubtitle"
+        android:layout_below="@+id/yourTasksSubtitle"
         android:background="@color/white"
         android:nestedScrollingEnabled="true"
         />
