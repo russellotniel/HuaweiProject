@@ -1,4 +1,4 @@
-package com.example.huaweiproject;
+package com.example.MyListProject;
 
 public class Task {
     protected int id;

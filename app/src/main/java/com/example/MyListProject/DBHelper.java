@@ -1,4 +1,4 @@
-package com.example.huaweiproject;
+package com.example.MyListProject;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;

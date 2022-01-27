@@ -1,4 +1,4 @@
-package com.example.huaweiproject;
+package com.example.MyListProject;
 
 import android.content.DialogInterface;
 import android.graphics.Canvas;
