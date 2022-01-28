@@ -10,4 +10,5 @@
     <color name="secondaryDark">#393E46</color>
     <color name="orange">#FD7014</color>
     <color name="white">#EEEEEE</color>
+    <color name="red">#FF0000</color>
 </resources>
