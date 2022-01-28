@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity implements DialogListener {
         Collections.reverse(taskList);
         adapater.setTaskList(taskList);
 
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AddTask.newInstance().show(getSupportFragmentManager(), AddTask.text);
-
-            }
-        });
+//        buttonAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AddTask.newInstance().show(getSupportFragmentManager(), AddTask.text);
+//
+//            }
+//        });
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RvHelper(adapater));
         itemTouchHelper.attachToRecyclerView(rv);
     }
@@ -66,5 +66,10 @@ public class MainActivity extends AppCompatActivity implements DialogListener {
         Collections.reverse(taskList);
         adapater.setTaskList(taskList);
         adapater.notifyDataSetChanged();
+    }
+
+    public void newTaskPage(View view) {
+        Intent intent = new Intent(this, AddTaskActivity.class);
+        startActivity(intent);
     }
 }

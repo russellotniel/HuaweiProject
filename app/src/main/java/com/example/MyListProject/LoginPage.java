@@ -19,7 +19,6 @@ import com.huawei.hms.support.account.service.AccountAuthService;
 import com.huawei.hms.support.api.entity.common.CommonConstant;
 
 public class LoginPage extends AppCompatActivity {
-
     // AccountAuthService provides a set of APIs, including silentSignIn, getSignInIntent, and signOut.
     private AccountAuthService mAuthService;
 
@@ -42,6 +41,9 @@ public class LoginPage extends AppCompatActivity {
                 silentSignInByHwId();
             }
         });
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void silentSignInByHwId() {

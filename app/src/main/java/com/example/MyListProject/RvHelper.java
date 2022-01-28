@@ -64,8 +64,6 @@ public class RvHelper extends ItemTouchHelper.SimpleCallback {
                 .create()
                 .decorate();
 
-
-
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
     }
 }

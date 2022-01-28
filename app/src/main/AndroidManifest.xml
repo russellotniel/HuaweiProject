@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HuaweiProject">
         <activity
+            android:name=".AddTaskActivity"
+            android:exported="true" />
+        <activity
             android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
@@ -20,8 +23,10 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
+        <activity
+            android:name=".LoginPage"
+            android:exported="true" />
     </application>
 
 </manifest>

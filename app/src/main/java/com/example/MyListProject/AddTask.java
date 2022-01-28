@@ -2,7 +2,6 @@ package com.example.MyListProject;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -58,6 +57,7 @@ public class AddTask extends BottomSheetDialogFragment {
                 button.setEnabled(false);
             }
         }
+
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -86,7 +86,6 @@ public class AddTask extends BottomSheetDialogFragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 String t = editText.getText().toString();
 
