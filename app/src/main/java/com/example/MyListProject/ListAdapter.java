@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ListAdapater extends RecyclerView.Adapter<ListAdapater.ViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     protected List<Task> taskList;
     protected MainActivity ma;
     protected DBHelper dbHelper;
 
-    public ListAdapater(DBHelper dbHelper, MainActivity ma){
+    public ListAdapter(DBHelper dbHelper, MainActivity ma){
         this.ma = ma;
         this.dbHelper = dbHelper;
     }
@@ -76,9 +76,9 @@ public class ListAdapater extends RecyclerView.Adapter<ListAdapater.ViewHolder> 
         b.putInt("id", item.getId());
         b.putString("task", item.getTask());
 
-        AddTask addTask = new AddTask();
-        addTask.setArguments(b);
-        addTask.show(ma.getSupportFragmentManager(), addTask.getTag());
+        EditTask editTask = new EditTask();
+        editTask.setArguments(b);
+        editTask.show(ma.getSupportFragmentManager(), editTask.getTag());
     }
 
     @Override

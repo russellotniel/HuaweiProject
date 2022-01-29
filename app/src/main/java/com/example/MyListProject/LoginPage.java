@@ -19,7 +19,6 @@ import com.huawei.hms.support.account.service.AccountAuthService;
 import com.huawei.hms.support.api.entity.common.CommonConstant;
 
 public class LoginPage extends AppCompatActivity {
-
     // AccountAuthService provides a set of APIs, including silentSignIn, getSignInIntent, and signOut.
     private AccountAuthService mAuthService;
 
@@ -41,9 +40,10 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View v) {
                 silentSignInByHwId();
             }
-
         });
 
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void silentSignInByHwId() {
@@ -108,8 +108,6 @@ public class LoginPage extends AppCompatActivity {
                 AuthAccount authAccount = authAccountTask.getResult();
                 dealWithResultOfSignIn(authAccount);
                 Log.i(TAG, "onActivitResult of sigInInIntent, request code: " + REQUEST_CODE_SIGN_IN);
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
             } else {
                 // The sign-in fails. Find the cause from the status code. For more information, please refer to Error Codes.
                 Log.e(TAG, "sign in failed : " +((ApiException)authAccountTask.getException()).getStatusCode());
