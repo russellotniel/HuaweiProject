@@ -17,21 +17,21 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-public class AddTask extends BottomSheetDialogFragment {
+public class EditTask extends BottomSheetDialogFragment {
 
-    protected static final String text = "AddTask";
+    protected static final String text = "EditTask";
     protected EditText editText;
     protected Button button;
     protected DBHelper dbHelper;
 
-    public static AddTask newInstance(){
-        return new AddTask();
+    public static EditTask newInstance(){
+        return new EditTask();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.add_task, container, false);
+        View v = inflater.inflate(R.layout.edit_task, container, false);
         return v;
     }
 
@@ -60,9 +60,7 @@ public class AddTask extends BottomSheetDialogFragment {
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -77,9 +75,7 @@ public class AddTask extends BottomSheetDialogFragment {
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
+            public void afterTextChanged(Editable editable) {}
         });
 
         boolean finalUpdate = update;
@@ -92,13 +88,6 @@ public class AddTask extends BottomSheetDialogFragment {
                 if(finalUpdate){
                     dbHelper.updateTask(b.getInt("id"), t);
                 }
-                else{
-                    Task task = new Task();
-                    task.setTask(t);
-                    task.setStatus(0);
-                    dbHelper.addTask(task);
-                }
-
                 dismiss();
             }
         });

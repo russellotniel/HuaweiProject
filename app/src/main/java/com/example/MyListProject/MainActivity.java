@@ -10,12 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.MyListProject.AddTask;
-import com.example.MyListProject.DBHelper;
-import com.example.MyListProject.DialogListener;
-import com.example.MyListProject.ListAdapater;
-import com.example.MyListProject.RvHelper;
-import com.example.MyListProject.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -28,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements DialogListener {
     protected FloatingActionButton buttonAdd;
     protected DBHelper dbHelper;
     protected List<Task> taskList;
-    protected ListAdapater adapater;
+    protected ListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,24 +33,17 @@ public class MainActivity extends AppCompatActivity implements DialogListener {
         buttonAdd = findViewById(R.id.addNewTask);
         dbHelper = new DBHelper(MainActivity.this);
         taskList = new ArrayList<>();
-        adapater = new ListAdapater(dbHelper, MainActivity.this);
+        adapter = new ListAdapter(dbHelper, MainActivity.this);
 
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(adapater);
+        rv.setAdapter(adapter);
 
         taskList = dbHelper.AllListTasks();
         Collections.reverse(taskList);
-        adapater.setTaskList(taskList);
+        adapter.setTaskList(taskList);
 
-//        buttonAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AddTask.newInstance().show(getSupportFragmentManager(), AddTask.text);
-//
-//            }
-//        });
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RvHelper(adapater));
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RvHelper(adapter));
         itemTouchHelper.attachToRecyclerView(rv);
     }
 
@@ -64,8 +51,8 @@ public class MainActivity extends AppCompatActivity implements DialogListener {
     public void onDialogClosed(DialogInterface dialogInterface) {
         taskList = dbHelper.AllListTasks();
         Collections.reverse(taskList);
-        adapater.setTaskList(taskList);
-        adapater.notifyDataSetChanged();
+        adapter.setTaskList(taskList);
+        adapter.notifyDataSetChanged();
     }
 
     public void newTaskPage(View view) {
