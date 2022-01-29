@@ -1,4 +1,4 @@
- package com.example.MyListProject;
+package com.example.MyListProject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +37,4 @@ import android.widget.EditText;
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
      }
-
-
  }

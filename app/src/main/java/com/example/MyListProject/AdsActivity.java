@@ -1,118 +1,5 @@
 package com.example.MyListProject;
 
-//import androidx.annotation.NonNull;
-//import androidx.appcompat.app.AppCompatActivity;
-//
-//import com.huawei.hms.ads.AdParam;
-//import com.huawei.hms.ads.AudioFocusType;
-//import com.huawei.hms.ads.HwAds;
-//import com.huawei.hms.ads.splash.SplashView;
-//
-//import android.content.Intent;
-//import android.content.pm.ActivityInfo;
-//import android.content.res.Configuration;
-//import android.os.Bundle;
-//import android.os.Handler;
-//import android.os.Message;
-//
-//public class AdsActivity extends AppCompatActivity {
-//    private static final String TAG = AdsActivity.class.getSimpleName();
-//
-//    private static final int AD_TIMEOUT = 10000;
-//    private static final int MSG_AD_TIMEOUT = 1001;
-//    private boolean hasPaused = false;
-//
-//    private Handler timeoutHandler = new Handler(new Handler.Callback() {
-//        @Override
-//        public boolean handleMessage(@NonNull Message msg) {
-//            if (AdsActivity.this.hasWindowFocus()) {
-//                jump();
-//            }
-//            return false;
-//        }
-//    });
-//
-//    private void loadAd() {
-//        AdParam adParam = new AdParam.Builder().build();
-//        SplashView splashView = findViewById(R.id.splash_ad_view);
-//        SplashView.SplashAdLoadListener splashAdLoadListener = new SplashView.SplashAdLoadListener() {
-//            @Override
-//            public void onAdLoaded() {
-//                // Called when an ad is loaded successfully.
-//
-//            }
-//            @Override
-//            public void onAdFailedToLoad(int errorCode) {
-//                // Called when an ad fails to be loaded. The app home screen is then displayed.
-//                jump();
-//            }
-//            @Override
-//            public void onAdDismissed() {
-//                // Called when an ad has been displayed. The app home screen is then displayed.
-//                jump();
-//            }
-//        };
-//        String slotId;
-//        // Lock the screen orientation on the device. Your app will automatically adapt to the screen orientation.
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
-//        int orientation = getScreenOrientation();
-//        // Set the default slogan and the splash ad unit ID based on the screen orientation on the device
-//        // Obtain SplashView.
-//
-//        // Set the audio focus type for a video splash ad.
-//        splashView.setAudioFocusType(AudioFocusType.NOT_GAIN_AUDIO_FOCUS_WHEN_MUTE);
-//        // Load the ad.
-//        splashView.load("testq6zq98hecj", orientation, adParam, splashAdLoadListener);
-//        // Send a delay message to ensure that the app home screen can be properly displayed after the ad display times out.
-//        timeoutHandler.removeMessages(MSG_AD_TIMEOUT);
-//        timeoutHandler.sendEmptyMessageDelayed(MSG_AD_TIMEOUT, AD_TIMEOUT);
-//    }
-//    private int getScreenOrientation() {
-//        Configuration config = getResources().getConfiguration();
-//        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//            return ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
-//        } else {
-//            return ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-//        }
-//    }
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_ads);
-//
-//        loadAd();
-//
-//        HwAds.init(this);
-//    }
-//
-//    private void jump() {
-//        if (!hasPaused) {
-//            hasPaused = true;
-//            startActivity(new Intent(AdsActivity.this, MainActivity.class));
-//            finish();
-//        }
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        timeoutHandler.removeMessages(MSG_AD_TIMEOUT);
-//        hasPaused = true;
-//        super.onStop();
-//    }
-//
-//    @Override
-//    protected void onRestart() {
-//        super.onRestart();
-//        hasPaused = false;
-//        jump();
-//    }
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//    }
-//}
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -133,22 +20,12 @@ import com.huawei.hms.ads.splash.SplashView;
 
 public class AdsActivity extends Activity{
     private static final String TAG = AdsActivity.class.getSimpleName();
-
-    // Ad display timeout interval, in milliseconds.
     private static final int AD_TIMEOUT = 10000;
-
-    // Ad display timeout message flag.
     private static final int MSG_AD_TIMEOUT = 1001;
-
-    /**
-     * Pause flag.
-     * On the splash ad screen:
-     * Set this parameter to true when exiting the app to ensure that the app home screen is not displayed.
-     * Set this parameter to false when returning to the splash ad screen from another screen to ensure that the app home screen can be displayed properly.
-     */
     private boolean hasPaused = false;
 
-    // Callback handler used when the ad display timeout message is received.
+    private SplashView splashView;
+
     private Handler timeoutHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(@NonNull Message msg) {
@@ -159,19 +36,15 @@ public class AdsActivity extends Activity{
         }
     });
 
-    private SplashView splashView;
-
     private SplashView.SplashAdLoadListener splashAdLoadListener = new SplashView.SplashAdLoadListener() {
         @Override
         public void onAdLoaded() {
-            // Called when an ad is loaded successfully.
             Log.i(TAG, "SplashAdLoadListener onAdLoaded.");
             Toast.makeText(AdsActivity.this, getString(R.string.status_load_ad_success), Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onAdFailedToLoad(int errorCode) {
-            // Called when an ad fails to be loaded.
             Log.i(TAG, "SplashAdLoadListener onAdFailedToLoad, errorCode: " + errorCode);
             Toast.makeText(AdsActivity.this, getString(R.string.status_load_ad_fail) + errorCode, Toast.LENGTH_SHORT).show();
             jump();
@@ -179,7 +52,6 @@ public class AdsActivity extends Activity{
 
         @Override
         public void onAdDismissed() {
-            // Called when the ad display is complete.
             Log.i(TAG, "SplashAdLoadListener onAdDismissed.");
             Toast.makeText(AdsActivity.this, getString(R.string.status_ad_dismissed), Toast.LENGTH_SHORT).show();
             jump();
@@ -189,13 +61,11 @@ public class AdsActivity extends Activity{
     private SplashAdDisplayListener adDisplayListener = new SplashAdDisplayListener() {
         @Override
         public void onAdShowed() {
-            // Called when an ad is displayed.
             Log.i(TAG, "SplashAdDisplayListener onAdShowed.");
         }
 
         @Override
         public void onAdClick() {
-            // Called when an ad is clicked.
             Log.i(TAG, "SplashAdDisplayListener onAdClick.");
         }
     };
@@ -205,7 +75,6 @@ public class AdsActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ads);
 
-        // Initialize the HUAWEI Ads SDK.
         HwAds.init(this);
 
         loadAd();
@@ -213,7 +82,6 @@ public class AdsActivity extends Activity{
 
     private void loadAd() {
         Log.i(TAG, "Start to load ad");
-        // Lock the screen orientation on the device. Your app will automatically adapt to the screen orientation.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         int orientation = getScreenOrientation();
         AdParam adParam = new AdParam.Builder().build();
@@ -221,30 +89,20 @@ public class AdsActivity extends Activity{
         splashView.setAdDisplayListener(adDisplayListener);
 
         String slotId;
-        // Set the default slogan and the splash ad unit ID based on the screen orientation on the device.
         if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//            splashView.setSloganResId(R.drawable.default_slogan);
             slotId = getString(R.string.ad_id_splash);
         } else {
-//            splashView.setSloganResId(R.drawable.default_slogan_landscape);
             slotId = getString(R.string.ad_id_splash_landscape);
         }
-
         splashView.setLogo(findViewById(R.id.logo_area));
 
-        // Set a logo image.
         splashView.setLogoResId(R.mipmap.ic_launcher);
-        // Set logo description.
         splashView.setMediaNameResId(R.string.app_name);
-        // Set the audio focus type for a video splash ad.
         splashView.setAudioFocusType(AudioFocusType.NOT_GAIN_AUDIO_FOCUS_WHEN_MUTE);
-
         splashView.load(slotId, orientation, adParam, splashAdLoadListener);
         Log.i(TAG, "End to load ad");
 
-        // Remove the timeout message from the message queue.
         timeoutHandler.removeMessages(MSG_AD_TIMEOUT);
-        // Send a delay message to ensure that the app home screen can be displayed when the ad display times out.
         timeoutHandler.sendEmptyMessageDelayed(MSG_AD_TIMEOUT, AD_TIMEOUT);
     }
 
@@ -257,16 +115,13 @@ public class AdsActivity extends Activity{
         }
     }
 
-    /**
-     * Switch from the splash ad screen to the app home screen when the ad display is complete.
-     */
     private void jump() {
         Log.i(TAG, "jump hasPaused: " + hasPaused);
         if (!hasPaused) {
             hasPaused = true;
             Log.i(TAG, "jump into application");
 
-            startActivity(new Intent(AdsActivity.this, MainActivity.class));
+            startActivity(new Intent(AdsActivity.this, LoginPage.class));
 
             Handler mainHandler = new Handler();
             mainHandler.postDelayed(new Runnable() {
@@ -278,9 +133,6 @@ public class AdsActivity extends Activity{
         }
     }
 
-    /**
-     * Set this parameter to true when exiting the app to ensure that the app home screen is not displayed.
-     */
     @Override
     protected void onStop() {
         Log.i(TAG, "SplashActivity onStop.");
@@ -290,9 +142,6 @@ public class AdsActivity extends Activity{
         super.onStop();
     }
 
-    /**
-     * Called when returning to the splash ad screen from another screen to access the app home screen.
-     */
     @Override
     protected void onRestart() {
         Log.i(TAG, "SplashActivity onRestart.");

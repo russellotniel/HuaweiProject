@@ -16,7 +16,6 @@ import java.util.List;
 public class DBHelper extends SQLiteOpenHelper {
 
     protected SQLiteDatabase db;
-
     protected static final String DB_Name = "MyList_Database";
     protected static final String Table = "MyList_Table";
     protected static final String c1 = "id";
@@ -92,5 +91,4 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return taskList;
     }
-
 }
