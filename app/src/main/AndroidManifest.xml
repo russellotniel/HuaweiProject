@@ -12,16 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HuaweiProject">
+
         <activity
             android:name=".AdsActivity"
             android:exported="false"
             android:screenOrientation="fullSensor"
             android:configChanges="orientation|screenSize"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            />
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
         <activity
             android:name=".LoginPage"
-            android:exported="false" />
+            android:exported="true" />
+
+        <activity
+            android:name=".AddTaskActivity"
+            android:exported="true" />
+
         <activity
             android:name=".WelcomeActivity"
             android:exported="true">
@@ -31,12 +37,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
         <meta-data
             android:name="com.huawei.hms.client.channel.androidMarket"
             android:value="false" />
     </application>
-
 </manifest>

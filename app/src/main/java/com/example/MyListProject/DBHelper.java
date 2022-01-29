@@ -16,7 +16,6 @@ import java.util.List;
 public class DBHelper extends SQLiteOpenHelper {
 
     protected SQLiteDatabase db;
-
     protected static final String DB_Name = "MyList_Database";
     protected static final String Table = "MyList_Table";
     protected static final String c1 = "id";
@@ -28,14 +27,14 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + Table + "(id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT, status INTEGER)");
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + Table + "(id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT, status INTEGER)");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Table);
-        onCreate(sqLiteDatabase);
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("DROP TABLE IF EXISTS " + Table);
+        onCreate(db);
     }
 
     public void addTask(Task task){
@@ -92,5 +91,4 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return taskList;
     }
-
 }

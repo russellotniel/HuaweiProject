@@ -14,11 +14,11 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 public class RvHelper extends ItemTouchHelper.SimpleCallback {
 
-    protected ListAdapater adapater;
+    protected ListAdapter adapter;
 
-    public RvHelper(ListAdapater adapater) {
+    public RvHelper(ListAdapter adapter) {
         super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
-        this.adapater = adapater;
+        this.adapter = adapter;
     }
 
     @Override
@@ -30,26 +30,26 @@ public class RvHelper extends ItemTouchHelper.SimpleCallback {
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
         final int position = viewHolder.getAdapterPosition();
         if(direction == ItemTouchHelper.LEFT){
-            AlertDialog.Builder builder = new AlertDialog.Builder(adapater.getContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(adapter.getContext());
             builder.setTitle("Remove Task");
-            builder.setMessage("Are you want to remove task?");
+            builder.setMessage("Are you sure you want to remove this task?");
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    adapater.delTask(position);
+                    adapter.delTask(position);
                 }
             });
             builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    adapater.notifyItemChanged(position);
+                    adapter.notifyItemChanged(position);
                 }
             });
             AlertDialog dialog = builder.create();
             dialog.show();
         }
         else{
-            adapater.editItem(position);
+            adapter.editItem(position);
         }
     }
 
@@ -57,14 +57,12 @@ public class RvHelper extends ItemTouchHelper.SimpleCallback {
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 
         new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                .addSwipeRightBackgroundColor(ContextCompat.getColor(adapater.getContext(), R.color.design_default_color_secondary_variant))
+                .addSwipeRightBackgroundColor(ContextCompat.getColor(adapter.getContext(), R.color.design_default_color_secondary_variant))
                 .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24)
                 .addSwipeLeftBackgroundColor(Color.RED)
                 .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_forever_24)
                 .create()
                 .decorate();
-
-
 
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
     }

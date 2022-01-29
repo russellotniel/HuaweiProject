@@ -20,6 +20,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 startActivity(new Intent(WelcomeActivity.this, AdsActivity.class));
                 finish();
             }
-        }, 5000);
+        }, 3000);
     }
 }
