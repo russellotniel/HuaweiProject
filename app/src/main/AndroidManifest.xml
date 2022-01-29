@@ -14,7 +14,11 @@
         android:theme="@style/Theme.HuaweiProject">
         <activity
             android:name=".AdsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="fullSensor"
+            android:configChanges="orientation|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            />
         <activity
             android:name=".LoginPage"
             android:exported="false" />
