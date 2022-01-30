@@ -42,6 +42,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
     implementation 'com.huawei.hms:hwid:6.3.0.301'
-    implementation 'com.huawei.hms:ads-lite:13.4.51.300'
+    implementation 'com.huawei.hms:ads-lite:13.4.32.300'
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
 }

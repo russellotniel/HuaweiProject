@@ -35,9 +35,6 @@ public class LoginPage extends AppCompatActivity {
                 silentSignInByHwId();
             }
         });
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     private void silentSignInByHwId() {
@@ -86,6 +83,8 @@ public class LoginPage extends AppCompatActivity {
                 AuthAccount authAccount = authAccountTask.getResult();
                 dealWithResultOfSignIn(authAccount);
                 Log.i(TAG, "onActivitResult of sigInInIntent, request code: " + REQUEST_CODE_SIGN_IN);
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
             } else {
                 Log.e(TAG, "sign in failed : " +((ApiException)authAccountTask.getException()).getStatusCode());
             }
