@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".AddTaskActivity">
+    tools:context=".AddTaskActivity"
+    android:background="?attr/background_color"
+    >
 
     <EditText
         android:id="@+id/taskName"
@@ -11,7 +13,9 @@
         android:layout_height="wrap_content"
         android:hint="New Task Name"
         android:paddingStart="12dp"
-        android:paddingEnd="12dp" />
+        android:paddingEnd="12dp"
+        android:textColor="?attr/text_color"
+        />
 
     <Button
         android:id="@+id/btnSave"
@@ -24,6 +28,6 @@
         android:layout_marginEnd="157dp"
         android:text="Add Task"
         android:onClick="insertTask"
-        android:textColor="@color/white" />
+        android:textColor="?attr/text_color" />
 
 </RelativeLayout>

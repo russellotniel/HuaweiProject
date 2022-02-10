@@ -153,7 +153,7 @@ public class AdsActivity extends Activity{
             hasPaused = true;
             Log.i(TAG, "jump into application");
 
-            startActivity(new Intent(AdsActivity.this, LoginPage.class));
+            startActivity(new Intent(AdsActivity.this, MainActivity.class));
 
             Handler mainHandler = new Handler();
             mainHandler.postDelayed(new Runnable() {

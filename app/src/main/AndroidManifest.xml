@@ -11,7 +11,8 @@
         android:label="MyList - To Do List"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HuaweiProject">
+        android:theme="@style/Theme.Light"
+        >
 
         <activity
             android:name=".AdsActivity"
